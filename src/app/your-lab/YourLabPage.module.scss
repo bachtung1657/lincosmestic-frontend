@@ -1,0 +1,131 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.yourLabPage {
+  padding-bottom: 8rem;
+}
+
+// --- HERO SECTION ---
+.hero {
+  padding: 8rem 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba($color-surface, 0.5) 0%, $color-background 100%);
+
+  &__title {
+    font-family: $font-secondary;
+    font-size: 5rem;
+    color: $color-primary;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    font-size: 1.8rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: darken($color-text, 15%);
+  }
+}
+
+// --- NOTES SECTION ---
+.sectionTitle {
+  font-family: $font-secondary;
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.notesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.noteCard {
+  border: 1px solid $color-border;
+  padding: 3rem;
+  border-radius: 8px;
+  background-color: $color-surface;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $color-primary;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  // Custom color for each note type
+  &.topNote { border-left: 3px solid #74b9ff; }
+  &.middleNote { border-left: 3px solid #ff7675; }
+  &.baseNote { border-left: 3px solid #55efc4; }
+
+  &__description {
+    font-size: 1.5rem;
+    color: darken($color-text, 20%);
+    margin-bottom: 2rem;
+  }
+
+  &__notesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    span {
+      background-color: lighten($color-background, 5%);
+      border: 1px solid $color-border;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+
+// --- CALL TO ACTION SECTION ---
+.ctaSection {
+  margin-top: 8rem;
+  text-align: center;
+  border-top: 1px solid $color-border;
+  padding-top: 6rem;
+}
+
+.cta__title {
+  font-family: $font-secondary;
+  font-size: 4rem;
+  color: $color-primary;
+}
+
+.cta__text {
+  font-size: 1.6rem;
+  max-width: 500px;
+  margin: 1.5rem auto 3rem;
+  color: darken($color-text, 15%);
+}
+
+.cta__button {
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  background-color: $color-primary;
+  color: $color-background;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba($color-primary, 0.2);
+  }
+}

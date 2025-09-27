@@ -1,0 +1,74 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.footer {
+  background-color: $color-surface;
+  border-top: 1px solid $color-border;
+  padding: 6rem 0;
+  color: $color-text-secondary;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__logo {
+    margin-bottom: 2rem;
+  }
+  
+  &__description {
+    font-size: 1.5rem;
+    max-width: 400px;
+    margin-bottom: 2rem;
+  }
+
+  &__copyright {
+    font-size: 1.3rem;
+    margin-top: auto; // Đẩy xuống cuối cột
+  }
+
+  &__right {
+    // Styling cho cột bên phải
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: 1.5rem;
+  }
+
+  &__contact {
+    list-style: none;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.5rem;
+
+    a {
+      color: $color-text-secondary;
+      transition: color 0.3s ease;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}

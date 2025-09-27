@@ -1,0 +1,16 @@
+@import '../../styles/utils/variables';
+
+.toast {
+  position: fixed;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $color-primary;
+  color: $color-background;
+  padding: 1.5rem 3rem;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  z-index: 9999;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}

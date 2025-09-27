@@ -1,0 +1,16 @@
+// --- COLORS (NEW THEME) ---
+$color-background: #FFFFFF; // Nền trắng sạch sẽ
+$color-surface: #F8F9FA;    // Nền xám rất nhạt cho card, component
+$color-text: #212529;       // Chữ đen/xám đậm, dễ đọc
+$color-text-secondary: #6c757d; // Chữ phụ màu xám nhạt hơn
+$color-primary: #3A86FF;       // Xanh dương làm điểm nhấn (giống trong ảnh mẫu)
+$color-border: #DEE2E6;     // Màu viền xám nhạt
+
+// --- TYPOGRAPHY ---
+$font-primary: 'Inter', sans-serif;
+$font-secondary: 'Playfair Display', serif;
+
+// --- BREAKPOINTS ---
+$bp-large: 1200px;
+$bp-medium: 900px;
+$bp-small: 600px;

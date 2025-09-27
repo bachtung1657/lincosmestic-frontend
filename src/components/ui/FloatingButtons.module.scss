@@ -1,0 +1,78 @@
+@import '../../styles/utils/variables';
+
+.floatingContainer {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.floatingButton {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  
+  svg {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    
+    svg {
+        transform: rotate(10deg);
+    }
+
+    .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-110%);
+    }
+  }
+}
+
+// Custom colors for each button
+.phone { background-color: #25D366; }
+.zalo { background-color: $color-primary; } // Dùng màu xanh chính của web
+.messenger { background-color: $color-primary; } // Dùng màu xanh chính của web
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%) translateX(-120%);
+  background-color: $color-text;
+  color: $color-background;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  margin-right: 1.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent $color-text;
+  }
+}

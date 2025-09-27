@@ -1,0 +1,18 @@
+@import './variables';
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+// Media query mixin
+@mixin respond($breakpoint) {
+  @if $breakpoint == medium {
+    @media (max-width: $bp-medium) { @content; }
+  }
+  @if $breakpoint == small {
+    @media (max-width: $bp-small) { @content; }
+  }
+}

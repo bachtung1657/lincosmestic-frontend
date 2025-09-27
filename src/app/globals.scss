@@ -1,0 +1,35 @@
+@import '../styles/utils/variables';
+@import '../styles/utils/mixins';
+@import '../styles/base/reset';
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap');
+
+// Các style chung khác
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// Style cho nội dung render từ admin
+.content-prose {
+    h1, h2, h3 {
+        font-family: $font-secondary;
+        color: $color-primary;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+}

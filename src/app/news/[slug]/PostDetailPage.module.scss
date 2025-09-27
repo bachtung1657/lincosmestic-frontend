@@ -1,0 +1,57 @@
+@import '../../../styles/utils/variables';
+
+.postDetail {
+    &__header {
+        position: relative;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-bottom: 6rem;
+
+        .headerContent {
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+    &__title {
+        font-family: $font-secondary;
+        font-size: 6rem;
+        max-width: 800px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+
+    &__meta {
+        font-size: 1.6rem;
+        margin-top: 1rem;
+        opacity: 0.9;
+    }
+
+    &__imageWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+        }
+    }
+
+    &__content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}

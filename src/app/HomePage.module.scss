@@ -1,0 +1,151 @@
+@import '../styles/utils/variables';
+@import '../styles/utils/mixins';
+
+// --- Hero Section ---
+.hero {
+  height: 90vh;
+  position: relative;
+  @include flex-center;
+  text-align: center;
+  overflow: hidden;
+
+  &__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1;
+    // Tạm thời ẩn video để dùng màu nền xám như ảnh lỗi bạn gửi
+    // display: none;
+    // background-color: #6c757d; // Màu nền xám
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 3;
+    animation: fadeIn 1s 0.5s ease-out forwards;
+    opacity: 0;
+  }
+  
+  &__title {
+    font-family: $font-secondary;
+    font-size: 8rem;
+    font-weight: 800;
+    color: #fff; // Chữ màu trắng trên nền tối
+    letter-spacing: 2px;
+    animation: slideUp 0.8s 0.7s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    
+    @include respond(small) {
+        font-size: 5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 2rem;
+    color: #e0e0e0; // Chữ phụ màu trắng ngà
+    margin-top: 1rem;
+    animation: slideUp 0.8s 0.9s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  // --- NÚT NHẤN ĐÃ ĐƯỢC THIẾT KẾ LẠI ---
+  &__cta {
+    display: inline-block;
+    margin-top: 4rem;
+    padding: 1.8rem 4.5rem; // Tăng kích thước
+    background-color: $color-primary; // Nền màu xanh dương chính
+    color: $color-background; // Chữ màu trắng
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none; // Bỏ viền
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    animation: slideUp 0.8s 1.1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    box-shadow: 0 4px 15px rgba($color-primary, 0.3);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba($color-primary, 0.4);
+    }
+  }
+}
+
+// --- Featured News Section ---
+.featuredNews {
+    padding: 8rem 0;
+}
+
+.sectionTitle {
+    font-family: $font-secondary;
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 6rem;
+    position: relative;
+    color: $color-text;
+    &::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 2px;
+        background-color: $color-primary;
+        margin: 1rem auto 0;
+    }
+}
+
+.postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 6rem;
+}
+
+.viewMoreContainer {
+  text-align: center;
+}
+
+.viewMoreButton {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  border: 1px solid $color-border;
+  color: $color-text-secondary;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+    background-color: rgba($color-primary, 0.05);
+  }
+}
+
+// --- Keyframes for Animations ---
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
