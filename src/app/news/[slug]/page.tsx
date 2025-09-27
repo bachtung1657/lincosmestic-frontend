@@ -4,20 +4,29 @@ import Image from 'next/image';
 import styles from './PostDetailPage.module.scss';
 import { Post } from '@/types';
 
-// Hàm này sẽ được gọi lúc build để lấy danh sách tất cả các bài viết
+// === HÀM "BẤT TỬ" - CHỐNG LỖI BUILD ===
 export async function generateStaticParams() {
-  const posts: Post[] | null = await getPosts();
+  try {
+    // Cố gắng gọi API để lấy danh sách bài viết
+    const posts: Post[] | null = await getPosts();
 
-  // TỐI ƯU: Thêm bước kiểm tra để đảm bảo posts là một mảng và không rỗng
-  // Nếu không có bài viết nào, trả về mảng rỗng để Next.js biết và không build trang này.
-  if (!posts || posts.length === 0) {
+    // Nếu API không trả về gì, hoặc trả về mảng rỗng, trả về một mảng rỗng
+    if (!posts || posts.length === 0) {
+      console.log('No posts found, returning empty array for static params.');
+      return [];
+    }
+
+    // Nếu thành công, trả về danh sách slug
+    console.log(`Found ${posts.length} posts to generate static pages.`);
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    // CỰC KỲ QUAN TRỌNG: Nếu API bị lỗi (backend sập, network error...)
+    // Thay vì làm sập build, chúng ta sẽ bắt lỗi và trả về một mảng rỗng.
+    console.error('Failed to fetch posts for generateStaticParams, returning empty array:', error);
     return [];
   }
-
-  // Trả về một mảng các object, mỗi object chứa slug của một bài viết
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
 }
 
 // Thêm type cho params
