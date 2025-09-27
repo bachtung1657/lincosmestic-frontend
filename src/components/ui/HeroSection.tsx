@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; 
 import styles from "../../app/HomePage.module.scss";
 
-// Định nghĩa các biến thể animation
-const containerVariants = {
+// Định nghĩa các biến thể animation với kiểu 'Variants'
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -16,27 +16,25 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: -30, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
       duration: 0.8,
-      // SỬA LỖI: Thay thế mảng cubic-bezier không hợp lệ bằng một ease-out chuẩn
-      ease: "circOut", 
+      ease: "circOut",
     },
   },
 };
 
-const buttonVariants = {
+const buttonVariants: Variants = {
   hidden: { y: 30, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
       duration: 0.8,
-      // SỬA LỖI: Thay thế mảng cubic-bezier không hợp lệ bằng một ease-out chuẩn
       ease: "circOut",
     },
   },

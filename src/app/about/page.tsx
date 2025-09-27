@@ -7,10 +7,8 @@ export const metadata = {
 };
 
 export default async function AboutPage() {
-  // Lấy dữ liệu từ API với slug 'about-us'
   const page = await getPageBySlug('about-us');
 
-  // Nếu API không trả về dữ liệu, hiển thị trang 404 chuẩn của Next.js
   if (!page) {
     notFound();
   }
@@ -21,7 +19,6 @@ export default async function AboutPage() {
         <h1 className={styles.aboutPage__title}>{page.title}</h1>
         <div 
           className="content-prose"
-          // Dùng dangerouslySetInnerHTML để render HTML từ Admin
           dangerouslySetInnerHTML={{ __html: page.content }}
         />
       </div>

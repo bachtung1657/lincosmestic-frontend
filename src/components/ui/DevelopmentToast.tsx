@@ -1,19 +1,24 @@
-"use client"; // Bắt buộc phải là Client Component để dùng state và effect
+"use client";
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './DevelopmentToast.module.scss';
 
-export default function DevelopmentToast({ isVisible }) {
+// Thêm type cho props
+type ToastProps = {
+  isVisible: boolean;
+};
+
+export default function DevelopmentToast({ isVisible }: ToastProps) {
   const [show, setShow] = useState(isVisible);
 
   useEffect(() => {
-    setShow(isVisible); // Cập nhật state khi prop thay đổi
+    setShow(isVisible);
     
     if (isVisible) {
       const timer = setTimeout(() => {
         setShow(false);
-      }, 4000); // Tự động ẩn sau 4 giây
+      }, 4000);
 
       return () => clearTimeout(timer);
     }

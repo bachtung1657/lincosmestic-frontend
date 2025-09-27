@@ -3,19 +3,23 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import styles from './PostDetailPage.module.scss';
 
-// Hàm này giúp Next.js tạo metadata động (tiêu đề trang) cho SEO
-export async function generateMetadata({ params }) {
+// Thêm type cho params
+type PageProps = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: PageProps) {
     const post = await getPostBySlug(params.slug);
     if (!post) {
         return { title: 'Không tìm thấy bài viết' };
     }
     return {
-        title: `${post.title} | Aromatique`,
+        title: post.title,
         description: post.excerpt,
     };
 }
 
-export default async function PostDetailPage({ params }) {
+export default async function PostDetailPage({ params }: PageProps) {
     const { slug } = params;
     const post = await getPostBySlug(slug);
 
@@ -37,7 +41,7 @@ export default async function PostDetailPage({ params }) {
                         src={post.cover_image}
                         alt={post.title}
                         fill
-                        priority // Ưu tiên tải ảnh này
+                        priority
                         style={{ objectFit: 'cover' }}
                     />
                 </div>

@@ -14,16 +14,18 @@ const exo2 = Exo_2({ subsets: ['latin'], weight: ['700', '800'], variable: '--fo
 
 export const metadata = {
   title: {
-    default: 'Lincosmetic - Nâng Tầm Vẻ Đẹp Của Bạn',
-    template: '%s | Lincosmetic',
+    default: 'Lincosmestic - Nâng Tầm Vẻ Đẹp Của Bạn',
+    template: '%s | Lincosmestic',
   },
   description: 'Khám phá thế giới nước hoa và mỹ phẩm cao cấp từ Lincosmestic.',
-  // icons: { // <-- XÓA BỎ HOÀN TOÀN KHỐI NÀY
-  //   icon: '/favicon.png',
-  // },
 };
 
-export default function RootLayout({ children }) {
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="vi" className={`${inter.variable} ${playfair.variable} ${exo2.variable}`}>
       <body>

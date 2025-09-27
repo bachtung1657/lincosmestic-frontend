@@ -1,13 +1,30 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './PostCard.module.scss';
+import React from 'react';
 
-export default function PostCard({ post, index = 0 }) {
+// Định nghĩa type cho đối tượng post
+type Post = {
+  id: number;
+  slug: string;
+  cover_image: string;
+  title: string;
+  category: { name: string } | null;
+  excerpt: string;
+};
+
+// Thêm type cho props
+type PostCardProps = {
+  post: Post;
+  index?: number;
+};
+
+export default function PostCard({ post, index = 0 }: PostCardProps) {
   return (
     <Link 
       href={`/news/${post.slug}`} 
       className={styles.postCard} 
-      style={{ '--delay': `${index * 100}ms` }}
+      style={{ '--delay': `${index * 100}ms` } as React.CSSProperties}
     >
       <div className={styles.postCard__imageWrapper}>
         <Image
