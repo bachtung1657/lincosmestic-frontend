@@ -1,6 +1,7 @@
 import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'export',
   // Cấu hình tối ưu hình ảnh
   images: {
     remotePatterns: [
