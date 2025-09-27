@@ -2,24 +2,23 @@ import { getPosts, getPostBySlug } from '@/services/api';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import styles from './PostDetailPage.module.scss';
-import { Post } from '@/types'; // Import Post type
+import { Post } from '@/types';
 
-// --- THAY ĐỔI CHÍNH BẮT ĐẦU TỪ ĐÂY ---
-
-// Bước 1: Thêm hàm generateStaticParams
 // Hàm này sẽ được gọi lúc build để lấy danh sách tất cả các bài viết
 export async function generateStaticParams() {
-  const posts: Post[] = await getPosts();
+  const posts: Post[] | null = await getPosts();
+
+  // TỐI ƯU: Thêm bước kiểm tra để đảm bảo posts là một mảng và không rỗng
+  // Nếu không có bài viết nào, trả về mảng rỗng để Next.js biết và không build trang này.
+  if (!posts || posts.length === 0) {
+    return [];
+  }
 
   // Trả về một mảng các object, mỗi object chứa slug của một bài viết
-  // Ví dụ: [ { slug: 'bai-viet-1' }, { slug: 'bai-viet-2' } ]
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
-
-// --- KẾT THÚC THAY ĐỔI CHÍNH ---
-
 
 // Thêm type cho params
 type PageProps = {
